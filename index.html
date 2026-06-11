@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+    <nav class="navbar navbar-expand-lg navbar- mb-4">
         <div class="container">
             <a class="navbar-brand" href="#">🚜 Sistema de Control Ganadero - El Carmelo</a>
         </div>
@@ -19,6 +19,9 @@
         <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
             <li class="nav-item">
                 <button class="nav-link active" id="inventario-tab" data-bs-toggle="tab" data-bs-target="#inventario" type="button">📋 Inventario de Animales</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" id="lotes-tab" data-bs-toggle="tab" data-bs-target="#lotes" type="button">🌾 Lotes de Ganado</button>
             </li>
             <li class="nav-item">
                 <button class="nav-link" id="vacunas-tab" data-bs-toggle="tab" data-bs-target="#vacunas" type="button">💉 Vacunación</button>
@@ -67,10 +70,23 @@
                                         <th>Arete/ID</th>
                                         <th>Tipo</th>
                                         <th>Raza</th>
-                                    </tr>
+                                        <th>Acciones</th> </tr>
                                 </thead>
                                 <tbody id="tabla-animales"></tbody>
                             </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="lotes">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card p-4">
+                            <h5>Resumen de Animales por Lotes (Categorías)</h5>
+                            <p class="text-muted">Aquí puedes ver de forma automática cuántos animales tienes registrados según su tipo.</p>
+                            <div class="row mt-4" id="contenedor-lotes">
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -202,6 +218,8 @@
         </div>
     </footer>
 
+
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
 </body>

@@ -3,7 +3,7 @@ body {
 }
 
 .navbar {
-    background-color: #2c3e50; /* Un azul oscuro elegante */
+    background-color: #e24e19; /* Un azul oscuro elegante */
 }
 
 .card {
@@ -12,12 +12,12 @@ body {
 }
 
 .btn-custom {
-    background-color: #27ae60; /* Verde campo */
+    background-color: #f66323; /* Verde campo */
     color: white;
 }
 
 .btn-custom:hover {
-    background-color: #219653;
+    background-color: #df591af1;
     color: white;
 }
 /* ==================================================== */
@@ -29,7 +29,7 @@ body {
 }
 
 .footer-finca h5 {
-    color: #2c3e50; /* Usamos el mismo tono azul oscuro de tu barra de navegación superior */
+    color: #f1390fed; /* Usamos el mismo tono azul oscuro de tu barra de navegación superior */
 }
 
 .extra-small {
