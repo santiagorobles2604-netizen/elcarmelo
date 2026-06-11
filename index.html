@@ -6,7 +6,7 @@
     <title>Inicio - El Carmelo AgroTech</title>
     <!-- Bootstrap CSS (El diseño base) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Tus propios estilos (Para que use tus colores verdes modernos) -->
+    <!-- Ruta corregida apuntando a tu carpeta css -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -26,7 +26,6 @@
                     <li class="nav-item"><a class="nav-link fw-semibold text-dark px-3" href="#beneficios">Cómo Funciona</a></li>
                     <li class="nav-item"><a class="nav-link fw-semibold text-dark px-3" href="#contacto">Contacto</a></li>
                 </ul>
-                <!-- Este botón te lleva mágicamente a tus tablas de animales -->
                 <a href="sistema.html" class="btn btn-custom px-4 py-2" style="border-radius: 25px;">Ingresar al Sistema ➔</a>
             </div>
         </div>
@@ -50,14 +49,15 @@
                         ¡Comenzar ahora!
                     </a>
                 </div>
-                
-                <!-- Imagen Derecha Ilustrativa -->
+              
+                <!-- Imagen Derecha basada en tu captura real -->
                 <div class="col-lg-6 text-center">
-                    <img src="https://images.unsplash.com/photo-1544252683-3665eb871a36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    <img src="assets/images/Foto software.jpeg" 
                          alt="Ganadería El Carmelo" 
                          class="img-fluid rounded-4 shadow-lg" 
-                         style="border: 10px solid white; transform: rotate(2deg);">
+                         style="border: 10px solid white; transform: rotate(2deg); max-height: 420px; width: 100%; object-fit: cover;">
                 </div>
+
             </div>
         </div>
     </section>
@@ -112,7 +112,7 @@
                 <div class="col-md-4 mb-4">
                     <h5 class="fw-bold mb-3" style="color: #1b5e20;">📞 Canales de Contacto</h5>
                     <ul class="list-unstyled text-muted small">
-                        <li class="mb-2">📍 <strong>Ubicación:</strong> San Roque, Cesar, Colombia</li> 
+                        <li class="mb-2">📍 <strong>Ubicación:</strong> Pailitas, Cesar, Colombia</li> 
                         <li class="mb-2">📱 <strong>Teléfono Celular:</strong> +57 300 123 4567</li>      
                         <li class="mb-2">✉️ <strong>Correo Electrónico:</strong> contacto@elcarmelo.com</li> 
                     </ul>
@@ -138,7 +138,7 @@
         </div>
     </footer>
 
-    <!-- Bootstrap JS (Para que funcionen los menús desplegables) -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

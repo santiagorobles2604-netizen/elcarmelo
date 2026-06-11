@@ -3,48 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Control Ganadero - Finca El Progreso</title>
+    <title>Control Ganadero - Finca El Carmelo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body style="background-color: #f4f7f6;">
 
-    <nav class="navbar navbar-expand-lg navbar- mb-4">
+    <!-- Barra del Sistema combinando el estilo corporativo -->
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4 shadow-sm" style="background-color: #1b5e20; py: 15px;">
         <div class="container">
-            <a class="navbar-brand" href="#">🚜 Sistema de Control Ganadero - El Carmelo</a>
+            <a class="navbar-brand fw-bold text-white" href="index.html">🚜 Sistema de Control Ganadero - El Carmelo</a>
+            <a href="index.html" class="btn btn-outline-light btn-sm px-3" style="border-radius: 15px;">Volver al Inicio</a>
         </div>
     </nav>
 
     <div class="container">
+        <!-- Pestañas de Navegación del Sistema -->
         <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
             <li class="nav-item">
-                <button class="nav-link active" id="inventario-tab" data-bs-toggle="tab" data-bs-target="#inventario" type="button">📋 Inventario de Animales</button>
+                <button class="nav-link active fw-semibold text-success" id="inventario-tab" data-bs-toggle="tab" data-bs-target="#inventario" type="button">📋 Inventario de Animales</button>
             </li>
             <li class="nav-item">
-                <button class="nav-link" id="lotes-tab" data-bs-toggle="tab" data-bs-target="#lotes" type="button">🌾 Lotes de Ganado</button>
+                <button class="nav-link fw-semibold text-success" id="lotes-tab" data-bs-toggle="tab" data-bs-target="#lotes" type="button">🌾 Lotes de Ganado</button>
             </li>
             <li class="nav-item">
-                <button class="nav-link" id="vacunas-tab" data-bs-toggle="tab" data-bs-target="#vacunas" type="button">💉 Vacunación</button>
+                <button class="nav-link fw-semibold text-success" id="vacunas-tab" data-bs-toggle="tab" data-bs-target="#vacunas" type="button">💉 Vacunación</button>
             </li>
             <li class="nav-item">
-                <button class="nav-link" id="enfermedades-tab" data-bs-toggle="tab" data-bs-target="#enfermedades" type="button">🩺 Enfermedades</button>
+                <button class="nav-link fw-semibold text-success" id="enfermedades-tab" data-bs-toggle="tab" data-bs-target="#enfermedades" type="button">🩺 Enfermedades</button>
             </li>
         </ul>
 
         <div class="tab-content" id="myTabContent">
             
+            <!-- PESTAÑA INVENTARIO -->
             <div class="tab-pane fade show active" id="inventario">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="card p-4 mb-4">
-                            <h5>Registrar Nuevo Animal</h5>
+                        <div class="card p-4 mb-4 shadow-sm" style="border-radius: 15px;">
+                            <h5 class="fw-bold mb-3" style="color: #1b5e20;">Registrar Nuevo Animal</h5>
                             <form id="form-animal">
                                 <div class="mb-3">
-                                    <label class="form-label">Número de Arete / ID</label>
+                                    <label class="form-label fw-semibold">Número de Arete / ID</label>
                                     <input type="text" id="arete" class="form-control" placeholder="Ej: 054" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Tipo de Animal</label>
+                                    <label class="form-label fw-semibold">Tipo de Animal</label>
                                     <select id="tipo" class="form-select" required>
                                         <option value="Vaca">Vaca</option>
                                         <option value="Toro">Toro</option>
@@ -54,23 +58,24 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Raza / Detalle</label>
+                                    <label class="form-label fw-semibold">Raza / Detalle</label>
                                     <input type="text" id="raza" class="form-control" placeholder="Ej: Brahman, Holstein">
                                 </div>
-                                <button type="submit" class="btn btn-custom w-100">Guardar Animal</button>
+                                <button type="submit" class="btn btn-custom w-100 text-white fw-bold py-2" style="border-radius: 10px;">Guardar Animal</button>
                             </form>
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <div class="card p-4">
-                            <h5>Lista de Animales en la Finca</h5>
-                            <table class="table table-striped mt-3">
-                                <thead>
+                        <div class="card p-4 shadow-sm" style="border-radius: 15px;">
+                            <h5 class="fw-bold mb-3" style="color: #1b5e20;">Lista de Animales en la Finca</h5>
+                            <table class="table table-hover align-middle mt-2">
+                                <thead class="table-light">
                                     <tr>
                                         <th>Arete/ID</th>
                                         <th>Tipo</th>
                                         <th>Raza</th>
-                                        <th>Acciones</th> </tr>
+                                        <th>Acciones</th>
+                                    </tr>
                                 </thead>
                                 <tbody id="tabla-animales"></tbody>
                             </table>
@@ -79,46 +84,47 @@
                 </div>
             </div>
 
+            <!-- PESTAÑA LOTES DINÁMICOS -->
             <div class="tab-pane fade" id="lotes">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card p-4">
-                            <h5>Resumen de Animales por Lotes (Categorías)</h5>
-                            <p class="text-muted">Aquí puedes ver de forma automática cuántos animales tienes registrados según su tipo.</p>
-                            <div class="row mt-4" id="contenedor-lotes">
-                                </div>
+                        <div class="card p-4 shadow-sm" style="border-radius: 15px;">
+                            <h5 class="fw-bold" style="color: #1b5e20;">Resumen de Animales por Lotes (Categorías)</h5>
+                            <p class="text-muted small">Aquí puedes ver de forma automática cuántos animales tienes registrados según su tipo.</p>
+                            <div class="row mt-4" id="contenedor-lotes"></div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- PESTAÑA VACUNACIÓN -->
             <div class="tab-pane fade" id="vacunas">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="card p-4 mb-4">
-                            <h5>Registrar Vacunación</h5>
+                        <div class="card p-4 mb-4 shadow-sm" style="border-radius: 15px;">
+                            <h5 class="fw-bold mb-3" style="color: #1b5e20;">Registrar Vacunación</h5>
                             <form id="form-vacuna">
                                 <div class="mb-3">
-                                    <label class="form-label">Arete del Animal</label>
+                                    <label class="form-label fw-semibold">Arete del Animal</label>
                                     <input type="text" id="vacuna-arete" class="form-control" placeholder="Ej: 054" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Nombre de la Vacuna</label>
+                                    <label class="form-label fw-semibold">Nombre de la Vacuna</label>
                                     <input type="text" id="vacuna-nombre" class="form-control" placeholder="Ej: Fiebre Aftosa, Triple" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Fecha de Aplicación</label>
+                                    <label class="form-label fw-semibold">Fecha de Aplicación</label>
                                     <input type="date" id="vacuna-fecha" class="form-control" required>
                                 </div>
-                                <button type="submit" class="btn btn-custom w-100">Registrar Vacuna</button>
+                                <button type="submit" class="btn btn-custom w-100 text-white fw-bold py-2" style="border-radius: 10px;">Registrar Vacuna</button>
                             </form>
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <div class="card p-4">
-                            <h5>Historial de Vacunación</h5>
-                            <table class="table table-striped mt-3">
-                                <thead>
+                        <div class="card p-4 shadow-sm" style="border-radius: 15px;">
+                            <h5 class="fw-bold mb-3" style="color: #1b5e20;">Historial de Vacunación</h5>
+                            <table class="table table-hover align-middle mt-2">
+                                <thead class="table-light">
                                     <tr>
                                         <th>Animal (Arete)</th>
                                         <th>Vacuna</th>
@@ -132,33 +138,34 @@
                 </div>
             </div>
 
+            <!-- PESTAÑA ENFERMEDADES -->
             <div class="tab-pane fade" id="enfermedades">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="card p-4 mb-4">
-                            <h5>Reportar Animal Enfermo</h5>
+                        <div class="card p-4 mb-4 shadow-sm" style="border-radius: 15px;">
+                            <h5 class="fw-bold mb-3" style="color: #1b5e20;">Reportar Animal Enfermo</h5>
                             <form id="form-enfermedad">
                                 <div class="mb-3">
-                                    <label class="form-label">Arete del Animal</label>
+                                    <label class="form-label fw-semibold">Arete del Animal</label>
                                     <input type="text" id="enf-arete" class="form-control" placeholder="Ej: 054" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Diagnóstico / Síntomas</label>
+                                    <label class="form-label fw-semibold">Diagnóstico / Síntomas</label>
                                     <input type="text" id="enf-nombre" class="form-control" placeholder="Ej: Mastitis, Cojera" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Tratamiento / Medicamento</label>
+                                    <label class="form-label fw-semibold">Tratamiento / Medicamento</label>
                                     <textarea id="enf-tratamiento" class="form-control" rows="2" placeholder="Ej: Antibiótico por 3 días"></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-custom w-100">Guardar Reporte</button>
+                                <button type="submit" class="btn btn-custom w-100 text-white fw-bold py-2" style="border-radius: 10px;">Guardar Reporte</button>
                             </form>
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <div class="card p-4">
-                            <h5>Control de Enfermedades y Tratamientos</h5>
-                            <table class="table table-striped mt-3">
-                                <thead>
+                        <div class="card p-4 shadow-sm" style="border-radius: 15px;">
+                            <h5 class="fw-bold mb-3" style="color: #1b5e20;">Control de Enfermedades y Tratamientos</h5>
+                            <table class="table table-hover align-middle mt-2">
+                                <thead class="table-light">
                                     <tr>
                                         <th>Animal (Arete)</th>
                                         <th>Enfermedad/Síntomas</th>
@@ -175,49 +182,37 @@
         </div>
     </div>
 
-    <footer class="footer-finca mt-5 py-5">
+    <!-- Footer Corporativo unificado -->
+    <footer class="footer-finca mt-5 py-5" style="background-color: #ffffff; border-top: 1px solid #e3e6f0;">
         <div class="container">
             <div class="row text-center text-md-start">
-                
                 <div class="col-md-4 mb-4">
-                    <h5 class="fw-bold mb-3">🌾 Finca El Carmelo</h5>
+                    <h5 class="fw-bold mb-3" style="color: #1b5e20;">🌾 Finca El Carmelo</h5>
                     <p class="text-muted small">Sistema modular para el control interno de conteo ganadero, inventario y registro sanitario de animales.</p>
-                    <p class="mb-1 mt-3 fw-semibold text-secondary">Encargados del predio:</p>
-                    <ul class="list-unstyled text-muted small">
-                        <li>• Santiago Robles (Administrador General)</li> <li>• Dr. Veterinario (Control Sanitario)</li>   </ul>
                 </div>
-
                 <div class="col-md-4 mb-4">
-                    <h5 class="fw-bold mb-3">📞 Canales de Contacto</h5>
+                    <h5 class="fw-bold mb-3" style="color: #1b5e20;">📞 Canales de Contacto</h5>
                     <ul class="list-unstyled text-muted small">
-                        <li class="mb-2">📍 <strong>Ubicación:</strong> San Roque, Cesar, Colombia</li> <li class="mb-2">📱 <strong>Teléfono Celular:</strong> +57 300 123 4567</li>      <li class="mb-2">✉️ <strong>Correo Electrónico:</strong> contacto@elcarmelo.com</li> </ul>
+                        <li>📍 Pailitas, Cesar, Colombia</li>
+                        <li>📱 +57 300 123 4567</li>
+                    </ul>
                 </div>
-
                 <div class="col-md-4 mb-4">
-                    <h5 class="fw-bold mb-3">ℹ️ Información Relevante</h5>
-                    <p class="text-muted small mb-3">Horario de labores en corral: Lunes a Sábado — 5:00 AM a 3:00 PM.</p>
-                    
-                    <p class="mb-2 fw-semibold text-secondary small">Nuestras redes:</p>
-                    <div class="redes-sociales">
-                        <a href="#" class="text-decoration-none me-3 text-success small">🟢 WhatsApp</a>
-                        <a href="#" class="text-decoration-none me-3 text-primary small">📘 Facebook</a>
-                        <a href="#" class="text-decoration-none text-danger small">📸 Instagram</a>
-                    </div>
+                    <h5 class="fw-bold mb-3" style="color: #1b5e20;">ℹ️ Proyecto Académico</h5>
+                    <p class="text-muted small">Diseñado como recurso de aprendizaje interactivo para la gestión de hatos en entornos rurales colombianos.</p>
                 </div>
-
             </div>
-
             <hr class="text-muted my-4">
-
             <div class="row">
                 <div class="col text-center">
                     <p class="text-muted small mb-1">© 2026 Finca El Carmelo. Todos los derechos reservados.</p>
-                    <p class="text-muted extra-small font-monospace">Proyecto de Formación - ADSO Trimester II - SENA</p>
+                    <p class="text-muted font-monospace" style="font-size: 0.75rem;">Proyecto de Formación - ADSO Trimestre II - SENA</p>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- Bootstrap JS y Script de Control Interno -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
 </body>

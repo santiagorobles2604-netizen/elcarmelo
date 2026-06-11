@@ -1,37 +1,48 @@
+/* Estilos Globales del Sitio */
 body {
-    background-color: #f4f7f6;
+    background-color: #f4f7f6; /* Fondo grisáceo claro muy sutil */
 }
 
-.navbar {
-    background-color: #e24e19; /* Un azul oscuro elegante */
+/* Color corporativo verde oscuro para títulos específicos */
+.text-success, .navbar-brand {
+    color: #1b5e20 !important;
 }
 
+/* Tarjetas */
 .card {
     border: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
 }
 
+.card:hover {
+    transform: translateY(-2px);
+}
+
+/* Botón personalizado unificado (Naranja campestre dinámico) */
 .btn-custom {
-    background-color: #f66323; /* Verde campo */
-    color: white;
+    background-color: #f66323; 
+    color: white !important;
+    border: none;
+    transition: background-color 0.2s ease;
 }
 
 .btn-custom:hover {
-    background-color: #df591af1;
-    color: white;
+    background-color: #df591a;
+    box-shadow: 0 4px 12px rgba(246, 99, 35, 0.2);
 }
-/* ==================================================== */
-/* ESTILOS EXCLUSIVOS PARA EL PIE DE PÁGINA (FOOTER)    */
-/* ==================================================== */
+
+/* Pie de Página (Footer unificado) */
 .footer-finca {
-    background-color: #ffffff; /* Fondo totalmente blanco para que resalte del gris del fondo */
-    border-top: 1px solid #e3e6f0; /* Una línea gris muy sutil en la parte superior */
+    background-color: #ffffff; 
+    border-top: 1px solid #e3e6f0; 
 }
 
 .footer-finca h5 {
-    color: #f1390fed; /* Usamos el mismo tono azul oscuro de tu barra de navegación superior */
+    color: #1b5e20; 
 }
 
+/* Tipografía pequeña institucional para el SENA */
 .extra-small {
-    font-size: 0.75rem; /* Un tamaño de letra un poco más pequeño para los créditos institucionales */
+    font-size: 0.75rem; 
 }
