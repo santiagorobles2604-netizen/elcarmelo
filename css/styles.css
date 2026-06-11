@@ -20,3 +20,18 @@ body {
     background-color: #219653;
     color: white;
 }
+/* ==================================================== */
+/* ESTILOS EXCLUSIVOS PARA EL PIE DE PÁGINA (FOOTER)    */
+/* ==================================================== */
+.footer-finca {
+    background-color: #ffffff; /* Fondo totalmente blanco para que resalte del gris del fondo */
+    border-top: 1px solid #e3e6f0; /* Una línea gris muy sutil en la parte superior */
+}
+
+.footer-finca h5 {
+    color: #2c3e50; /* Usamos el mismo tono azul oscuro de tu barra de navegación superior */
+}
+
+.extra-small {
+    font-size: 0.75rem; /* Un tamaño de letra un poco más pequeño para los créditos institucionales */
+}
