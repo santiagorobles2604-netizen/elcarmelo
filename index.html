@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Ganadero - Finca El Progreso</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="#">🚜 Sistema de Control Ganadero - El Carmelo</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+            <li class="nav-item">
+                <button class="nav-link active" id="inventario-tab" data-bs-toggle="tab" data-bs-target="#inventario" type="button">📋 Inventario de Animales</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" id="vacunas-tab" data-bs-toggle="tab" data-bs-target="#vacunas" type="button">💉 Vacunación</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" id="enfermedades-tab" data-bs-toggle="tab" data-bs-target="#enfermedades" type="button">🩺 Enfermedades</button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+            
+            <div class="tab-pane fade show active" id="inventario">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card p-4 mb-4">
+                            <h5>Registrar Nuevo Animal</h5>
+                            <form id="form-animal">
+                                <div class="mb-3">
+                                    <label class="form-label">Número de Arete / ID</label>
+                                    <input type="text" id="arete" class="form-control" placeholder="Ej: 054" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Tipo de Animal</label>
+                                    <select id="tipo" class="form-select" required>
+                                        <option value="Vaca">Vaca</option>
+                                        <option value="Toro">Toro</option>
+                                        <option value="Ternero">Ternero</option>
+                                        <option value="Caballo">Caballo</option>
+                                        <option value="Otro">Otro</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Raza / Detalle</label>
+                                    <input type="text" id="raza" class="form-control" placeholder="Ej: Brahman, Holstein">
+                                </div>
+                                <button type="submit" class="btn btn-custom w-100">Guardar Animal</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card p-4">
+                            <h5>Lista de Animales en la Finca</h5>
+                            <table class="table table-striped mt-3">
+                                <thead>
+                                    <tr>
+                                        <th>Arete/ID</th>
+                                        <th>Tipo</th>
+                                        <th>Raza</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabla-animales"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="vacunas">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card p-4 mb-4">
+                            <h5>Registrar Vacunación</h5>
+                            <form id="form-vacuna">
+                                <div class="mb-3">
+                                    <label class="form-label">Arete del Animal</label>
+                                    <input type="text" id="vacuna-arete" class="form-control" placeholder="Ej: 054" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Nombre de la Vacuna</label>
+                                    <input type="text" id="vacuna-nombre" class="form-control" placeholder="Ej: Fiebre Aftosa, Triple" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Fecha de Aplicación</label>
+                                    <input type="date" id="vacuna-fecha" class="form-control" required>
+                                </div>
+                                <button type="submit" class="btn btn-custom w-100">Registrar Vacuna</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card p-4">
+                            <h5>Historial de Vacunación</h5>
+                            <table class="table table-striped mt-3">
+                                <thead>
+                                    <tr>
+                                        <th>Animal (Arete)</th>
+                                        <th>Vacuna</th>
+                                        <th>Fecha</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabla-vacunas"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="enfermedades">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card p-4 mb-4">
+                            <h5>Reportar Animal Enfermo</h5>
+                            <form id="form-enfermedad">
+                                <div class="mb-3">
+                                    <label class="form-label">Arete del Animal</label>
+                                    <input type="text" id="enf-arete" class="form-control" placeholder="Ej: 054" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Diagnóstico / Síntomas</label>
+                                    <input type="text" id="enf-nombre" class="form-control" placeholder="Ej: Mastitis, Cojera" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Tratamiento / Medicamento</label>
+                                    <textarea id="enf-tratamiento" class="form-control" rows="2" placeholder="Ej: Antibiótico por 3 días"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-custom w-100">Guardar Reporte</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card p-4">
+                            <h5>Control de Enfermedades y Tratamientos</h5>
+                            <table class="table table-striped mt-3">
+                                <thead>
+                                    <tr>
+                                        <th>Animal (Arete)</th>
+                                        <th>Enfermedad/Síntomas</th>
+                                        <th>Tratamiento</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabla-enfermedades"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
