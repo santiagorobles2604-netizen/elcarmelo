@@ -3,200 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Control Ganadero - Finca El Progreso</title>
+    <title>Inicio - El Carmelo AgroTech</title>
+    <!-- Bootstrap CSS (El diseño base) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tus propios estilos (Para que use tus colores verdes modernos) -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar- mb-4">
+    <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="#">🚜 Sistema de Control Ganadero - El Carmelo</a>
+            <a class="navbar-brand fw-bold" style="color: #1b5e20; font-size: 1.5rem;" href="#">
+                🚜 MI GRANJA - EL CARMELO
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menuPrincipal">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link fw-semibold text-dark px-3" href="#">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold text-dark px-3" href="#beneficios">Cómo Funciona</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold text-dark px-3" href="#contacto">Contacto</a></li>
+                </ul>
+                <!-- Este botón te lleva mágicamente a tus tablas de animales -->
+                <a href="sistema.html" class="btn btn-custom px-4 py-2" style="border-radius: 25px;">Ingresar al Sistema ➔</a>
+            </div>
         </div>
     </nav>
 
-    <div class="container">
-        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
-            <li class="nav-item">
-                <button class="nav-link active" id="inventario-tab" data-bs-toggle="tab" data-bs-target="#inventario" type="button">📋 Inventario de Animales</button>
-            </li>
-            <li class="nav-item">
-                <button class="nav-link" id="lotes-tab" data-bs-toggle="tab" data-bs-target="#lotes" type="button">🌾 Lotes de Ganado</button>
-            </li>
-            <li class="nav-item">
-                <button class="nav-link" id="vacunas-tab" data-bs-toggle="tab" data-bs-target="#vacunas" type="button">💉 Vacunación</button>
-            </li>
-            <li class="nav-item">
-                <button class="nav-link" id="enfermedades-tab" data-bs-toggle="tab" data-bs-target="#enfermedades" type="button">🩺 Enfermedades</button>
-            </li>
-        </ul>
-
-        <div class="tab-content" id="myTabContent">
-            
-            <div class="tab-pane fade show active" id="inventario">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card p-4 mb-4">
-                            <h5>Registrar Nuevo Animal</h5>
-                            <form id="form-animal">
-                                <div class="mb-3">
-                                    <label class="form-label">Número de Arete / ID</label>
-                                    <input type="text" id="arete" class="form-control" placeholder="Ej: 054" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Tipo de Animal</label>
-                                    <select id="tipo" class="form-select" required>
-                                        <option value="Vaca">Vaca</option>
-                                        <option value="Toro">Toro</option>
-                                        <option value="Ternero">Ternero</option>
-                                        <option value="Caballo">Caballo</option>
-                                        <option value="Otro">Otro</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Raza / Detalle</label>
-                                    <input type="text" id="raza" class="form-control" placeholder="Ej: Brahman, Holstein">
-                                </div>
-                                <button type="submit" class="btn btn-custom w-100">Guardar Animal</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card p-4">
-                            <h5>Lista de Animales en la Finca</h5>
-                            <table class="table table-striped mt-3">
-                                <thead>
-                                    <tr>
-                                        <th>Arete/ID</th>
-                                        <th>Tipo</th>
-                                        <th>Raza</th>
-                                        <th>Acciones</th> </tr>
-                                </thead>
-                                <tbody id="tabla-animales"></tbody>
-                            </table>
-                        </div>
-                    </div>
+    <!-- SECCIÓN DE PORTADA PRINCIPAL (HERO) -->
+    <section class="hero-section d-flex align-items-center" style="min-height: 85vh; background: linear-gradient(135deg, #f5f8f6 0%, #e8f5e9 100%);">
+        <div class="container">
+            <div class="row align-items-center">
+                
+                <!-- Texto Izquierdo -->
+                <div class="col-lg-6 mb-5 mb-lg-0 pe-lg-5">
+                    <p class="text-success fw-bold text-uppercase" style="letter-spacing: 2px; font-size: 0.9rem;">Descubre la única</p>
+                    <h1 class="display-4 fw-bold mb-4" style="color: #1b5e20; line-height: 1.2;">
+                        Plataforma inteligente para el control de animales
+                    </h1>
+                    <p class="lead text-muted mb-5" style="font-size: 1.1rem;">
+                        El sistema web que siempre has necesitado. Administra tu inventario ganadero, lleva el control sanitario de vacunas, supervisa los lotes y optimiza la producción de tu finca en un solo lugar.
+                    </p>
+                    <a href="sistema.html" class="btn btn-custom btn-lg px-5 py-3" style="border-radius: 30px; font-size: 1.1rem; box-shadow: 0 8px 20px rgba(46, 125, 50, 0.3);">
+                        ¡Comenzar ahora!
+                    </a>
+                </div>
+                
+                <!-- Imagen Derecha Ilustrativa -->
+                <div class="col-lg-6 text-center">
+                    <img src="https://images.unsplash.com/photo-1544252683-3665eb871a36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Ganadería El Carmelo" 
+                         class="img-fluid rounded-4 shadow-lg" 
+                         style="border: 10px solid white; transform: rotate(2deg);">
                 </div>
             </div>
-
-            <div class="tab-pane fade" id="lotes">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card p-4">
-                            <h5>Resumen de Animales por Lotes (Categorías)</h5>
-                            <p class="text-muted">Aquí puedes ver de forma automática cuántos animales tienes registrados según su tipo.</p>
-                            <div class="row mt-4" id="contenedor-lotes">
-                                </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-pane fade" id="vacunas">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card p-4 mb-4">
-                            <h5>Registrar Vacunación</h5>
-                            <form id="form-vacuna">
-                                <div class="mb-3">
-                                    <label class="form-label">Arete del Animal</label>
-                                    <input type="text" id="vacuna-arete" class="form-control" placeholder="Ej: 054" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Nombre de la Vacuna</label>
-                                    <input type="text" id="vacuna-nombre" class="form-control" placeholder="Ej: Fiebre Aftosa, Triple" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Fecha de Aplicación</label>
-                                    <input type="date" id="vacuna-fecha" class="form-control" required>
-                                </div>
-                                <button type="submit" class="btn btn-custom w-100">Registrar Vacuna</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card p-4">
-                            <h5>Historial de Vacunación</h5>
-                            <table class="table table-striped mt-3">
-                                <thead>
-                                    <tr>
-                                        <th>Animal (Arete)</th>
-                                        <th>Vacuna</th>
-                                        <th>Fecha</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tabla-vacunas"></tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-pane fade" id="enfermedades">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card p-4 mb-4">
-                            <h5>Reportar Animal Enfermo</h5>
-                            <form id="form-enfermedad">
-                                <div class="mb-3">
-                                    <label class="form-label">Arete del Animal</label>
-                                    <input type="text" id="enf-arete" class="form-control" placeholder="Ej: 054" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Diagnóstico / Síntomas</label>
-                                    <input type="text" id="enf-nombre" class="form-control" placeholder="Ej: Mastitis, Cojera" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Tratamiento / Medicamento</label>
-                                    <textarea id="enf-tratamiento" class="form-control" rows="2" placeholder="Ej: Antibiótico por 3 días"></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-custom w-100">Guardar Reporte</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card p-4">
-                            <h5>Control de Enfermedades y Tratamientos</h5>
-                            <table class="table table-striped mt-3">
-                                <thead>
-                                    <tr>
-                                        <th>Animal (Arete)</th>
-                                        <th>Enfermedad/Síntomas</th>
-                                        <th>Tratamiento</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tabla-enfermedades"></tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
-    </div>
+    </section>
 
-    <footer class="footer-finca mt-5 py-5">
+    <!-- SECCIÓN DE BENEFICIOS (TARJETAS) -->
+    <section id="beneficios" class="py-5 bg-white">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold" style="color: #1b5e20;">¿Por qué elegir nuestro sistema?</h2>
+                <p class="text-muted">Desarrollado con las mejores herramientas para facilitar tu día a día en el campo.</p>
+            </div>
+            
+            <div class="row g-4 mt-3">
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-4 shadow-sm" style="border-radius: 20px;">
+                        <div class="mb-3" style="font-size: 3rem;">📋</div>
+                        <h5 class="fw-bold text-success">Inventario Preciso</h5>
+                        <p class="text-muted small">Registra cada animal con su arete, raza y tipo. Organiza automáticamente tus lotes de vacas, toros y terneros.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-4 shadow-sm" style="border-radius: 20px;">
+                        <div class="mb-3" style="font-size: 3rem;">💉</div>
+                        <h5 class="fw-bold text-success">Control Sanitario</h5>
+                        <p class="text-muted small">Lleva un historial detallado de vacunación y tratamientos médicos para prevenir enfermedades en tu rebaño.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-4 shadow-sm" style="border-radius: 20px;">
+                        <div class="mb-3" style="font-size: 3rem;">📊</div>
+                        <h5 class="fw-bold text-success">Métricas en Tiempo Real</h5>
+                        <p class="text-muted small">Visualiza resúmenes instantáneos de la cantidad de animales en tu predio sin tener que contar manualmente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PIE DE PÁGINA (FOOTER) -->
+    <footer id="contacto" class="footer-finca py-5" style="background-color: #f5f8f6; border-top: 2px solid #e8f5e9;">
         <div class="container">
             <div class="row text-center text-md-start">
-                
                 <div class="col-md-4 mb-4">
-                    <h5 class="fw-bold mb-3">🌾 Finca El Carmelo</h5>
+                    <h5 class="fw-bold mb-3" style="color: #1b5e20;">🌾 Finca El Carmelo</h5>
                     <p class="text-muted small">Sistema modular para el control interno de conteo ganadero, inventario y registro sanitario de animales.</p>
                     <p class="mb-1 mt-3 fw-semibold text-secondary">Encargados del predio:</p>
                     <ul class="list-unstyled text-muted small">
-                        <li>• Santiago Robles (Administrador General)</li> <li>• Dr. Veterinario (Control Sanitario)</li>   </ul>
+                        <li>• Santiago Robles (Administrador General)</li> 
+                        <li>• Dr. Veterinario (Control Sanitario)</li>   
+                    </ul>
                 </div>
-
                 <div class="col-md-4 mb-4">
-                    <h5 class="fw-bold mb-3">📞 Canales de Contacto</h5>
+                    <h5 class="fw-bold mb-3" style="color: #1b5e20;">📞 Canales de Contacto</h5>
                     <ul class="list-unstyled text-muted small">
-                        <li class="mb-2">📍 <strong>Ubicación:</strong> San Roque, Cesar, Colombia</li> <li class="mb-2">📱 <strong>Teléfono Celular:</strong> +57 300 123 4567</li>      <li class="mb-2">✉️ <strong>Correo Electrónico:</strong> contacto@elcarmelo.com</li> </ul>
+                        <li class="mb-2">📍 <strong>Ubicación:</strong> San Roque, Cesar, Colombia</li> 
+                        <li class="mb-2">📱 <strong>Teléfono Celular:</strong> +57 300 123 4567</li>      
+                        <li class="mb-2">✉️ <strong>Correo Electrónico:</strong> contacto@elcarmelo.com</li> 
+                    </ul>
                 </div>
-
                 <div class="col-md-4 mb-4">
-                    <h5 class="fw-bold mb-3">ℹ️ Información Relevante</h5>
+                    <h5 class="fw-bold mb-3" style="color: #1b5e20;">ℹ️ Información Relevante</h5>
                     <p class="text-muted small mb-3">Horario de labores en corral: Lunes a Sábado — 5:00 AM a 3:00 PM.</p>
-                    
                     <p class="mb-2 fw-semibold text-secondary small">Nuestras redes:</p>
                     <div class="redes-sociales">
                         <a href="#" class="text-decoration-none me-3 text-success small">🟢 WhatsApp</a>
@@ -204,23 +127,18 @@
                         <a href="#" class="text-decoration-none text-danger small">📸 Instagram</a>
                     </div>
                 </div>
-
             </div>
-
             <hr class="text-muted my-4">
-
             <div class="row">
                 <div class="col text-center">
                     <p class="text-muted small mb-1">© 2026 Finca El Carmelo. Todos los derechos reservados.</p>
-                    <p class="text-muted extra-small font-monospace">Proyecto de Formación - ADSO Trimester II - SENA</p>
+                    <p class="text-muted extra-small font-monospace">Proyecto de Formación - ADSO Trimestre II - SENA</p>
                 </div>
             </div>
         </div>
     </footer>
 
-
-    
+    <!-- Bootstrap JS (Para que funcionen los menús desplegables) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js"></script>
 </body>
 </html>
