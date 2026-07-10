@@ -4,39 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Control Ganadero - Finca El Carmelo</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons (Para quitar los emojis chichipatos) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- SweetAlert2 (Para las alertas animadas) -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Estilo especial para que al imprimir el PDF solo salga la Hoja de Vida -->
+    <style>
+        @media print {
+            body * { visibility: hidden; }
+            #modalPerfilAnimal, #modalPerfilAnimal * { visibility: visible; }
+            #modalPerfilAnimal { position: absolute; left: 0; top: 0; width: 100%; }
+            .print-none { display: none !important; }
+        }
+    </style>
 </head>
 <body style="background-color: #f4f7f6;">
 
-    <!-- Barra del Sistema combinando el estilo corporativo -->
     <nav class="navbar navbar-expand-lg navbar-dark mb-4 shadow-sm" style="background-color: #dd5718; py: 15px;">
         <div class="container">
             <a class="navbar-brand fw-bold text-white" href="index.html">🚜 Sistema de Control Ganadero - El Carmelo</a>
-            <a href="index.html" class="btn btn-outline-light btn-sm px-3" style="border-radius: 15px;">Volver al Inicio</a>
+            <div>
+                <a href="index.html" class="btn btn-outline-light btn-sm px-3 me-2" style="border-radius: 15px;">Volver al Inicio</a>
+            </div>
         </div>
     </nav>
 
     <div class="container">
-        <!-- Pestañas de Navegación del Sistema -->
         <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
             <li class="nav-item">
-                <button class="nav-link active fw-semibold text-success" id="inventario-tab" data-bs-toggle="tab" data-bs-target="#inventario" type="button">📋 Inventario de Animales</button>
+                <button class="nav-link active fw-semibold text-success" id="inventario-tab" data-bs-toggle="tab" data-bs-target="#inventario" type="button"><i class="bi bi-clipboard-data"></i> Inventario</button>
             </li>
             <li class="nav-item">
-                <button class="nav-link fw-semibold text-success" id="lotes-tab" data-bs-toggle="tab" data-bs-target="#lotes" type="button">🌾 Lotes de Ganado</button>
+                <button class="nav-link fw-semibold text-success" id="lotes-tab" data-bs-toggle="tab" data-bs-target="#lotes" type="button"><i class="bi bi-columns-gap"></i> Lotes</button>
             </li>
             <li class="nav-item">
-                <button class="nav-link fw-semibold text-success" id="vacunas-tab" data-bs-toggle="tab" data-bs-target="#vacunas" type="button">💉 Vacunación</button>
+                <button class="nav-link fw-semibold text-success" id="reproduccion-tab" data-bs-toggle="tab" data-bs-target="#reproduccion" type="button"><i class="bi bi-gender-ambiguous"></i> Reproducción y Ciclo</button>
             </li>
             <li class="nav-item">
-                <button class="nav-link fw-semibold text-success" id="enfermedades-tab" data-bs-toggle="tab" data-bs-target="#enfermedades" type="button">🩺 Enfermedades</button>
+                <button class="nav-link fw-semibold text-success" id="bajas-tab" data-bs-toggle="tab" data-bs-target="#bajas" type="button"><i class="bi bi-graph-down-arrow"></i> Ventas y Muertes</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link fw-semibold text-success" id="vacunas-tab" data-bs-toggle="tab" data-bs-target="#vacunas" type="button"><i class="bi bi-capsule"></i> Vacunación</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link fw-semibold text-success" id="enfermedades-tab" data-bs-toggle="tab" data-bs-target="#enfermedades" type="button"><i class="bi bi-heart-pulse"></i> Enfermedades</button>
             </li>
         </ul>
 
         <div class="tab-content" id="myTabContent">
             
-            <!-- PESTAÑA INVENTARIO -->
+            <!-- Pestaña Inventario -->
             <div class="tab-pane fade show active" id="inventario">
                 <div class="row">
                     <div class="col-md-4">
@@ -68,6 +89,11 @@
                     <div class="col-md-8">
                         <div class="card p-4 shadow-sm" style="border-radius: 15px;">
                             <h5 class="fw-bold mb-3" style="color: #dd5718;">Lista de Animales en la Finca</h5>
+                            
+                            <div class="mb-3">
+                                <input type="text" id="buscador-animales" class="form-control border-success shadow-sm" placeholder="🔍 Buscar animal por Arete, Tipo o Raza...">
+                            </div>
+
                             <table class="table table-hover align-middle mt-2">
                                 <thead class="table-light">
                                     <tr>
@@ -84,7 +110,7 @@
                 </div>
             </div>
 
-            <!-- PESTAÑA LOTES DINÁMICOS -->
+            <!-- Pestaña Lotes -->
             <div class="tab-pane fade" id="lotes">
                 <div class="row">
                     <div class="col-md-12">
@@ -97,7 +123,110 @@
                 </div>
             </div>
 
-            <!-- PESTAÑA VACUNACIÓN -->
+            <!-- Pestaña Reproducción -->
+            <div class="tab-pane fade" id="reproduccion">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card p-4 mb-4 shadow-sm" style="border-radius: 15px;">
+                            <h5 class="fw-bold mb-3" style="color: #dd5718;">Historial Reproductivo</h5>
+                            <form id="form-reproduccion">
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Arete del Animal</label>
+                                    <input type="text" id="rep-arete" class="form-control" placeholder="Ej: 054" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Fecha de Nacimiento</label>
+                                    <input type="date" id="rep-nacimiento" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">¿Está en Celo?</label>
+                                    <select id="rep-celo" class="form-select">
+                                        <option value="No">No</option>
+                                        <option value="Sí (En Celo)">Sí (En Celo)</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Estado de Preñez / Partos</label>
+                                    <select id="rep-estado" class="form-select">
+                                        <option value="Vacía / No aplica">Vacía / No aplica</option>
+                                        <option value="Preñada">Preñada</option>
+                                        <option value="Parida (Con cría)">Parida (Con cría)</option>
+                                        <option value="Destete">Destete / Secado</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Meses de Edad o de Gestación</label>
+                                    <input type="number" id="rep-meses" class="form-control" placeholder="Ej: 5 meses" min="0">
+                                </div>
+                                <button type="submit" class="btn btn-custom w-100 text-white fw-bold py-2" style="border-radius: 10px;">Guardar Registro</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card p-4 shadow-sm" style="border-radius: 15px;">
+                            <h5 class="fw-bold mb-3" style="color: #dd5718;">Fichas de Edad y Reproducción</h5>
+                            <table class="table table-hover align-middle mt-2">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Arete</th>
+                                        <th>F. Nacimiento</th>
+                                        <th>¿Celo?</th>
+                                        <th>Estado / Parto</th>
+                                        <th>Tiempo / Edad</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabla-reproduccion"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pestaña Bajas -->
+            <div class="tab-pane fade" id="bajas">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card p-4 mb-4 shadow-sm" style="border-radius: 15px;">
+                            <h5 class="fw-bold mb-3" style="color: #dd5718;">Reportar Salida de Animal</h5>
+                            <form id="form-baja">
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Arete del Animal</label>
+                                    <input type="text" id="baja-arete" class="form-control" placeholder="Ej: 054" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Tipo de Novedad</label>
+                                    <select id="baja-tipo" class="form-select" required>
+                                        <option value="Venta">💰 Venta Comercial</option>
+                                        <option value="Muerte">🪦 Muerte / Pérdida</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Precio Venta / Causa Muerte</label>
+                                    <input type="text" id="baja-detalle" class="form-control" placeholder="Ej: $2.500.000 o Picadura de serpiente" required>
+                                </div>
+                                <button type="submit" class="btn btn-custom w-100 text-white fw-bold py-2" style="border-radius: 10px;">Registrar Salida</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card p-4 shadow-sm" style="border-radius: 15px;">
+                            <h5 class="fw-bold mb-3" style="color: #dd5718;">Historial de Ventas y Muertes</h5>
+                            <table class="table table-hover align-middle mt-2">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Arete</th>
+                                        <th>Novedad</th>
+                                        <th>Detalles / Observaciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabla-bajas"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pestaña Vacunas -->
             <div class="tab-pane fade" id="vacunas">
                 <div class="row">
                     <div class="col-md-4">
@@ -138,7 +267,7 @@
                 </div>
             </div>
 
-            <!-- PESTAÑA ENFERMEDADES -->
+            <!-- Pestaña Enfermedades -->
             <div class="tab-pane fade" id="enfermedades">
                 <div class="row">
                     <div class="col-md-4">
@@ -182,7 +311,21 @@
         </div>
     </div>
 
-    <!-- Footer Corporativo unificado -->
+    <!-- MODAL DE HOJA DE VIDA (Añadido para el Perfil Profesional) -->
+    <div class="modal fade" id="modalPerfilAnimal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="border-radius: 15px;">
+                <div class="modal-header text-white" style="background-color: #dd5718; border-top-left-radius: 14px; border-top-right-radius: 14px;">
+                    <h5 class="modal-title fw-bold"><i class="bi bi-card-list"></i> Hoja de Vida Médica e Historial</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="contenido-perfil">
+                    <!-- Se llena dinámicamente desde JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer class="footer-finca mt-5 py-5" style="background-color: #ffffff; border-top: 1px solid #e3e6f0;">
         <div class="container">
             <div class="row text-center text-md-start">
@@ -212,7 +355,6 @@
         </div>
     </footer>
 
-    <!-- Bootstrap JS y Script de Control Interno -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
 </body>
